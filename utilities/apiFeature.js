@@ -5,7 +5,7 @@ class ApiFeature{
     }
 
     filter(){
-        console.log(this.queryBody);
+        // console.log(this.queryBody);
         const queryObj= {...this.queryBody};
         const excludeFields=['sort','page','limit','fields'];
         for(let i in queryObj){
@@ -17,7 +17,7 @@ class ApiFeature{
             }
         }
         this.query=this.query.find(queryObj);
-        console.log(this.query);
+        // console.log(this.query);
         return this;
     }
 
