@@ -1,6 +1,13 @@
 const dotenv=require('dotenv');
 dotenv.config({path:'./config.env'});  //read a config.env
 const mongoose=require('mongoose');
+
+// handle unCaught exception means in your sync code if there is any issue then it will handle here globally
+
+process.on('uncaughtException',(err)=>{
+    console.log(err.name,err.message);
+    process.exit(1);
+})
 const app=require('./app');
 
 // Connect DB 
@@ -19,11 +26,3 @@ process.on('unhandledRejection',(err)=>{
         process.exit(1);  // here first server is close then app is exit 
     })
 });
-
-
-// handle unCaught exception means in your sync code if there is any issue then it will handle here globally
-
-process.on('uncaughtException',(err)=>{
-    console.log(err.name,err.message);
-    process.exit(1);
-})
